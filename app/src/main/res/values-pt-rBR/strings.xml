@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Tradutor Concorrente</string>
+    <string name="text_to_be_translated">Texto a ser traduzido</string>
+    <string name="translate">Traduzir</string>
+    <string name="from">De</string>
+    <string name="to">Para</string>
+    <string name="swap_languages">Trocar idiomas</string>
+</resources>
