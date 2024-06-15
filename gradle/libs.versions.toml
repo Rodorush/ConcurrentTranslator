@@ -1,5 +1,5 @@
 [versions]
-activityVersion = "1.9.0"
+activityKtx = "1.9.0"
 agp = "8.5.0"
 kotlin = "1.9.0"
 coreKtx = "1.13.1"
@@ -13,7 +13,7 @@ constraintlayout = "2.1.4"
 retrofit = "2.9.0"
 
 [libraries]
-androidx-activity-v190 = { module = "androidx.activity:activity", version.ref = "activityVersion" }
+androidx-activity-ktx = { module = "androidx.activity:activity-ktx", version.ref = "activityKtx" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

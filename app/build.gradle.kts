@@ -50,5 +50,5 @@ dependencies {
     androidTestImplementation(libs.androidx.espresso.core)
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
-    implementation(libs.androidx.activity.v190)
+    implementation(libs.androidx.activity.ktx)
 }
