@@ -1,7 +1,8 @@
-package br.com.rodorush
+package br.com.rodorush.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import br.com.rodorush.R
 import br.com.rodorush.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
