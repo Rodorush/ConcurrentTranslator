@@ -2,8 +2,9 @@
 <resources>
     <string name="app_name">Traductor Concurrente</string>
     <string name="text_to_be_translated">Texto a ser traducido</string>
+    <string name="text_translated">Texto traducido</string>
     <string name="translate">Traducir</string>
     <string name="from">De</string>
     <string name="to">Para</string>
-    <string name="swap_languages">Intercambiar idiomas</string>
+    <string name="translation_direction">Sentido de la traducción</string>
 </resources>

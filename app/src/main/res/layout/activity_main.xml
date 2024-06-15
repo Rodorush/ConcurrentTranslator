@@ -67,8 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="8dp"
-            android:contentDescription="@string/swap_languages"
-            android:src="@drawable/baseline_swap_horiz_36" />
+            android:contentDescription="@string/translation_direction"
+            android:src="@drawable/baseline_arrow_forward_36" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/languageToTil"
@@ -106,8 +106,9 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:enabled="false"
         android:gravity="top"
-        android:hint="@string/text_to_be_translated"
+        android:hint="@string/text_translated"
         android:inputType="textMultiLine"
         android:overScrollMode="always"
         android:padding="16dp"

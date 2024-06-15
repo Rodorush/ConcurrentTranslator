@@ -2,8 +2,9 @@
 <resources>
     <string name="app_name">Tradutor Concorrente</string>
     <string name="text_to_be_translated">Texto a ser traduzido</string>
+    <string name="text_translated">Texto traduzido</string>
     <string name="translate">Traduzir</string>
     <string name="from">De</string>
     <string name="to">Para</string>
-    <string name="swap_languages">Trocar idiomas</string>
+    <string name="translation_direction">Sentido da tradução</string>
 </resources>

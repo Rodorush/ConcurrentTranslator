@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Concurrent Translator</string>
     <string name="text_to_be_translated">Text to be translated</string>
+    <string name="text_translated">Text translated</string>
     <string name="translate">Translate</string>
     <string name="from">From</string>
     <string name="to">To</string>
-    <string name="swap_languages">Swap languages</string>
+    <string name="translation_direction">Translation direction</string>
 </resources>
