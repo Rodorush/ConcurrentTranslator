@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import br.com.rodorush.R
 import br.com.rodorush.databinding.ActivityMainBinding
 import br.com.rodorush.model.domain.ApiError
+import br.com.rodorush.model.domain.LanguageList.Language
 import br.com.rodorush.model.livedata.TranslatorLiveData
 import br.com.rodorush.ui.viewmodel.TranslatorViewModel
 
@@ -26,41 +27,44 @@ class MainActivity : AppCompatActivity() {
         var fromLanguage = ""
         var toLanguage = ""
 
-        val languagesAdapter =
-            ArrayAdapter(this, android.R.layout.simple_list_item_1, mutableListOf<String>())
+        val languagesAdapter = ArrayAdapter<Language>(this, android.R.layout.simple_list_item_1, mutableListOf())
         with(amb) {
             languageFromActv.apply {
                 setAdapter(languagesAdapter)
-                setOnItemClickListener { _, _, _, _ -> fromLanguage = text.toString() }
+                setOnItemClickListener { parent, _, position, _ ->
+                    val selectedLanguage = parent.getItemAtPosition(position) as Language
+                    fromLanguage = selectedLanguage.language
+                }
             }
             languageToActv.apply {
                 setAdapter(languagesAdapter)
-                setOnItemClickListener { _, _, _, _ -> toLanguage = text.toString() }
+                setOnItemClickListener { parent, _, position, _ ->
+                    val selectedLanguage = parent.getItemAtPosition(position) as Language
+                    toLanguage = selectedLanguage.language
+                }
             }
             translateBt.setOnClickListener {
-                tvm.translate(fromEt.text.toString(), fromLanguage, toLanguage, "text")
+                tvm.translate(fromEt.text.toString(), fromLanguage, toLanguage)
             }
         }
 
         TranslatorLiveData.languageListLiveData.observe(this) { languageList ->
-            val sortedLanguages =
-                languageList.data.languages.sortedBy { it.language }.map { it.language }
             languagesAdapter.clear()
-            languagesAdapter.addAll(sortedLanguages)
+            languagesAdapter.addAll(languageList.languages.sortedBy { it.name })
             languagesAdapter.notifyDataSetChanged()
             languagesAdapter.getItem(0)?.also { from ->
-                amb.languageFromActv.setText(from, false)
-                fromLanguage = from
+                amb.languageFromActv.setText(from.name, false)
+                fromLanguage = from.language
             }
             languagesAdapter.getItem(languagesAdapter.count - 1)?.also { to ->
-                amb.languageToActv.setText(to, false)
-                toLanguage = to
+                amb.languageToActv.setText(to.name, false)
+                toLanguage = to.language
             }
         }
 
         TranslatorLiveData.translationResultLiveData.observe(this) { translationResult ->
             with(amb) {
-                translationResult.data.translations.first().translatedText.also {
+                translationResult.data.translations.translatedText.also {
                     toEt.setText(it)
                 }
             }
@@ -69,11 +73,11 @@ class MainActivity : AppCompatActivity() {
         tvm.getLanguages()
 
         tvm.apiError.observe(this) { apiError ->
-            shoErrorDialog(apiError)
+            showErrorDialog(apiError)
         }
     }
 
-    private fun shoErrorDialog(apiError: ApiError) {
+    private fun showErrorDialog(apiError: ApiError) {
         AlertDialog.Builder(this)
             .setTitle(getString(R.string.error))
             .setMessage(getString(R.string.error_code_message, apiError.code, apiError.message))

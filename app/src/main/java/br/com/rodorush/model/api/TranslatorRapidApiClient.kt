@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object TranslatorRapidApiClient {
-    private const val BASE_URL = "https://google-translator9.p.rapidapi.com/v2/"
+    private const val BASE_URL = "https://deep-translate1.p.rapidapi.com/language/translate/v2/"
 
     private val loggingInterceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY

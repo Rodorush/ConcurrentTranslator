@@ -4,9 +4,9 @@ data class TranslationResult(
     val data: Data
 ) {
     data class Data(
-        val translations: List<Translation>
+        val translations: Translations
     ) {
-        data class Translation(
+        data class Translations(
             val translatedText: String
         )
     }

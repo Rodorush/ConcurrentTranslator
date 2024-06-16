@@ -31,9 +31,9 @@ class TranslatorViewModel : ViewModel() {
         }
     }
 
-    fun translate(query: String, source: String, target: String, format: String) =
+    fun translate(query: String, source: String, target: String) =
         viewModelScope.launch(Dispatchers.IO) {
-            val request = TranslationRequest(query, source, target, format)
+            val request = TranslationRequest(query, source, target)
             TranslatorRapidApiClient.service.translate(request).execute()
                 .also { response ->
                     if (response.code() == HTTP_OK) {
