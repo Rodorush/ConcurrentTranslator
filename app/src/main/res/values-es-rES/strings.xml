@@ -2,9 +2,10 @@
 <resources>
     <string name="app_name">Traductor Concurrente</string>
     <string name="text_to_be_translated">Texto a ser traducido</string>
-    <string name="text_translated">Texto traducido</string>
     <string name="translate">Traducir</string>
     <string name="from">De</string>
     <string name="to">Para</string>
     <string name="translation_direction">Sentido de la traducción</string>
+    <string name="error">Error</string>
+    <string name="error_code_message">Código de error: %1$d\nMensaje: %2$s</string>
 </resources>

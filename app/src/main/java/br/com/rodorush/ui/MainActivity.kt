@@ -3,9 +3,11 @@ package br.com.rodorush.ui
 import android.os.Bundle
 import android.widget.ArrayAdapter
 import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import br.com.rodorush.R
 import br.com.rodorush.databinding.ActivityMainBinding
+import br.com.rodorush.model.domain.ApiError
 import br.com.rodorush.model.livedata.TranslatorLiveData
 import br.com.rodorush.ui.viewmodel.TranslatorViewModel
 
@@ -65,5 +67,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         tvm.getLanguages()
+
+        tvm.apiError.observe(this) { apiError ->
+            shoErrorDialog(apiError)
+        }
+    }
+
+    private fun shoErrorDialog(apiError: ApiError) {
+        AlertDialog.Builder(this)
+            .setTitle(getString(R.string.error))
+            .setMessage(getString(R.string.error_code_message, apiError.code, apiError.message))
+            .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+            .show()
     }
 }

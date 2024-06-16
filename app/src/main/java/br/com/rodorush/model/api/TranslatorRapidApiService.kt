@@ -13,14 +13,14 @@ import retrofit2.http.Query
 interface TranslatorRapidApiService {
     @Headers(
         "x-rapidapi-host:google-translator9.p.rapidapi.com",
-        "x-rapidapi-key: chave"
+        "x-rapidapi-key: 84c45541a2mshf075bfc1c3ab1f1p1a5cf0jsn84c68bb3ef37"
     )
     @GET("languages")
     fun getLanguages(): Call<LanguageList>
 
     @Headers(
         "x-rapidapi-host:google-translator9.p.rapidapi.com",
-        "x-rapidapi-key: chave"
+        "x-rapidapi-key: 84c45541a2mshf075bfc1c3ab1f1p1a5cf0jsn84c68bb3ef37"
     )
     @POST(".")
     fun translate(
