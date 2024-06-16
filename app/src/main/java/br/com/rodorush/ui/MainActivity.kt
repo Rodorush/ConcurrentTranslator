@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
                 setOnItemClickListener { _, _, _, _ -> toLanguage = text.toString() }
             }
             translateBt.setOnClickListener {
-                tvm.translate(fromLanguage, toLanguage, toEt.text.toString(), "text")
+                tvm.translate(fromEt.text.toString(), fromLanguage, toLanguage, "text")
             }
         }
 

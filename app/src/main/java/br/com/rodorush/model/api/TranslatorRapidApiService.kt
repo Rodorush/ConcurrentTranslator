@@ -22,7 +22,7 @@ interface TranslatorRapidApiService {
         "x-rapidapi-host:google-translator9.p.rapidapi.com",
         "x-rapidapi-key: chave"
     )
-    @POST("")
+    @POST(".")
     fun translate(
         @Body request: TranslationRequest
     ): Call<TranslationResult>

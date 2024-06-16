@@ -1,5 +1,6 @@
 package br.com.rodorush.ui.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.rodorush.model.api.TranslatorRapidApiClient
@@ -16,6 +17,9 @@ class TranslatorViewModel : ViewModel() {
                 response.body()?.also { languageList ->
                     TranslatorLiveData.languageListLiveData.postValue(languageList)
                 }
+            } else {
+                Log.e("TranslatorViewModel", "Error getting languages: ${response.code()}")
+                Log.e("TranslatorViewModel", "Response: ${response.errorBody()?.string()}")
             }
         }
     }
@@ -29,6 +33,9 @@ class TranslatorViewModel : ViewModel() {
                         response.body()?.let { translationResult ->
                             TranslatorLiveData.translationResultLiveData.postValue(translationResult)
                         }
+                    } else {
+                        Log.e("TranslatorViewModel", "Error translating text: ${response.code()}")
+                        Log.e("TranslatorViewModel", "Response: ${response.errorBody()?.string()}")
                     }
                 }
         }
