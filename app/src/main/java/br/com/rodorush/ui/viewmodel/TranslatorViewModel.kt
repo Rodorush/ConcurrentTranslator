@@ -3,6 +3,7 @@ package br.com.rodorush.ui.viewmodel
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import br.com.rodorush.model.api.TranslatorRapidApiClient
+import br.com.rodorush.model.domain.TranslationRequest
 import br.com.rodorush.model.livedata.TranslatorLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,7 +22,8 @@ class TranslatorViewModel : ViewModel() {
 
     fun translate(query: String, source: String, target: String, format: String) =
         viewModelScope.launch(Dispatchers.IO) {
-            TranslatorRapidApiClient.service.translate(query, source, target, format).execute()
+            val request = TranslationRequest(query, source, target, format)
+            TranslatorRapidApiClient.service.translate(request).execute()
                 .also { response ->
                     if (response.code() == HTTP_OK) {
                         response.body()?.let { translationResult ->
